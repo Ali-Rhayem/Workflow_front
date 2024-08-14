@@ -1,18 +1,15 @@
 name: Notify Update Submodules
 
-on:
-  push:
-    branches:
-      - main  # Trigger on push to main branch
+on: push  
 
 jobs:
-  trigger-dispatch:
-    runs-on: ubuntu-latest
+  notify-main-project:
+      runs-on: ubuntu-latest
 
-    steps:
-    - name: Repository Dispatch
-      uses: peter-evans/repository-dispatch@v1
-      with:
-        token: ${{ secrets.PAT }}
-        repository: Ali-Rhayem/Workflow_test  
-        event-type: update-submodules-event  
+      steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.PAT }}
+          repository: Ali-Rhayem/Workflow_test
+          event-type: update-submodules-event
